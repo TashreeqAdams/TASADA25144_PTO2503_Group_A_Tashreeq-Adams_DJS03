@@ -33,15 +33,19 @@ function PodcastPreview() {
   }
 
   return (
-    <div>
+    <div className="thumbnail">
       {data && Array.isArray(data)
         ? data.map((element, index) => (
             <div key={index}>
-              <img src={element.image} alt={element.title || "Podcast image"} />
-              <h1>{element.title}</h1>
-              <p>{element.seasons}</p>
-              <p>Genres:</p>
-              <p>Last Updated:</p>
+              <img
+                className="podcast-img"
+                src={element.image}
+                alt={element.title || "Podcast image"}
+              />
+              <h1 className="podcast-title">{element.title}</h1>
+              <p className="seasonDetails">{element.seasons}</p>
+              <p className="podcast-genres">Genres:</p>
+              <p className="podcast-update">Last Updated:</p>
             </div>
           ))
         : null}
