@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function DataFetchComponent() {
+function PodcastPreview() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -29,15 +29,24 @@ function DataFetchComponent() {
   }
 
   if (error) {
-    return <div>Error ${error.message}</div>;
+    return <div>Error: {error.message}</div>;
   }
 
   return (
     <div>
-      <h1>Fetched Data:</h1>
-      {data && <pre>{JSON.stringify(data, null, 2)}</pre>}
+      {data && Array.isArray(data)
+        ? data.map((element, index) => (
+            <div key={index}>
+              <img src={element.image} alt={element.title || "Podcast image"} />
+              <h1>{element.title}</h1>
+              <p>{element.seasons}</p>
+              <p>Genres:</p>
+              <p>Last Updated:</p>
+            </div>
+          ))
+        : null}
     </div>
   );
 }
 
-export default DataFetchComponent;
+export default PodcastPreview;
