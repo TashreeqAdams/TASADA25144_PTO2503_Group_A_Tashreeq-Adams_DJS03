@@ -22,5 +22,6 @@ export async function fetchPodcasts(setPodcasts, setError, setLoading) {
     setError(err.message);
   } finally {
     setLoading(false);
+    console.log("Loading state is now false");
   }
 }

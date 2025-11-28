@@ -10,8 +10,10 @@ export default function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchPodcasts(setError, setLoading, setPodcasts);
+    fetchPodcasts(setPodcasts, setError, setLoading);
   }, []);
+
+  console.log("Loading:", loading, "Error:", error, "Podcasts:", podcasts);
 
   return (
     <>
@@ -21,7 +23,9 @@ export default function App() {
         {!loading && error && (
           <p>Error occurred while fetching podcasts: {error}</p>
         )}
-        {!loading && !error && <PodcastGrid />}
+        {!loading && !error && (
+          <PodcastGrid podcasts={podcasts} genres={genres} />
+        )}
       </main>
     </>
   );
