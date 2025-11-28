@@ -1,10 +1,28 @@
-import React from "react";
-import "./App.css";
+import { useEffect, useState } from "react";
+import PodcastGrid from "./components/PodcastGrid";
+import { genres } from "./data";
+import { fetchPodcasts } from "./api/fetchPodcasts";
+import Header from "./components/Header";
 
-import PodcastPreview from "./PodcastPreview";
+export default function App() {
+  const [podcasts, setPodcasts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-const App = () => {
-  return <PodcastPreview></PodcastPreview>;
-};
+  useEffect(() => {
+    fetchPodcasts(setError, setLoading, setPodcasts);
+  }, []);
 
-export default App;
+  return (
+    <>
+      <Header />
+      <main>
+        {loading && <p>Loading Podcasts</p>}
+        {!loading && error && (
+          <p>Error occurred while fetching podcasts: {error}</p>
+        )}
+        {!loading && !error && <PodcastGrid />}
+      </main>
+    </>
+  );
+}
