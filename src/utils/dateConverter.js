@@ -1,5 +1,3 @@
-import { podcasts } from "../data.js";
-
 export function daysAgo(isoString) {
   const pastDate = new Date(isoString);
 

@@ -1,4 +1,5 @@
 import "../App.css";
+import { daysAgo } from "../utils/dateConverter";
 
 export default function PodcastCard({ podcast, genres }) {
   return (
@@ -12,7 +13,7 @@ export default function PodcastCard({ podcast, genres }) {
           .map((id) => genres.find((g) => g.id === id)?.title)
           .join(", ")}
       </p>
-      <p className="podcast-update">Last updated: {podcast.updated}</p>
+      <p className="podcast-update">Last updated: {daysAgo(podcast.updated)}</p>
     </div>
   );
 }
