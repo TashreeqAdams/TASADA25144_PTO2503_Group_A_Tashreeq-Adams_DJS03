@@ -7,12 +7,14 @@ export default function PodcastCard({ podcast, genres }) {
       <img className="podcast-img" src={podcast.image} alt={podcast.title} />
       <h2 className="podcast-title">{podcast.title}</h2>
       <p className="seasonDetails">{podcast.seasons} seasons</p>
-      <p className="podcast-genres">
-        Genres:{" "}
+      <div className="podcast-genres">
+        {" "}
         {podcast.genres
           .map((id) => genres.find((g) => g.id === id)?.title)
-          .join(", ")}
-      </p>
+          .map((title, index) => (
+            <p key={index}>{title}</p>
+          ))}
+      </div>
       <p className="podcast-update">Last updated: {daysAgo(podcast.updated)}</p>
     </div>
   );
