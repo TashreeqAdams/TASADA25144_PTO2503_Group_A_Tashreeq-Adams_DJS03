@@ -17,16 +17,18 @@ export default function App() {
 
   return (
     <>
-      <Header />
-      <main>
-        {loading && <p>Loading Podcasts</p>}
-        {!loading && error && (
-          <p>Error occurred while fetching podcasts: {error}</p>
-        )}
-        {!loading && !error && (
-          <PodcastGrid podcasts={podcasts} genres={genres} />
-        )}
-      </main>
+      <div className="container">
+        <Header />
+        <main>
+          {loading && <p>Loading Podcasts</p>}
+          {!loading && error && (
+            <p>Error occurred while fetching podcasts: {error}</p>
+          )}
+          {!loading && !error && (
+            <PodcastGrid podcasts={podcasts} genres={genres} />
+          )}
+        </main>
+      </div>
     </>
   );
 }
