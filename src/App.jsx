@@ -4,6 +4,13 @@ import { genres } from "./data";
 import { fetchPodcasts } from "./api/fetchPodcasts";
 import Header from "./components/Header";
 
+/**
+ * App component — main entry point of the application.
+ * Handles loading, error states, and passing podcast data down to the PodcastGrid component.
+ *
+ * @returns {JSX.Element} The rendered application layout.
+ */
+
 export default function App() {
   const [podcasts, setPodcasts] = useState([]);
   const [loading, setLoading] = useState(true);
